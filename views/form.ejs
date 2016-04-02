@@ -8,23 +8,19 @@
 <script src="/javascripts/jsoneditor.js"></script>
 <script src="/javascripts/jx.js"></script>
 </head>
+
 <body>
 <div class="row">
-<div class="large-3 columns">
-<h1><img src="http://placehold.it/400x100&text=Edit"></h1>
-</div>
-<div class="large-9 columns right">
-<button id='submit' style="text-align: right;">Save changes</button>
-</div>
+<div class="large-12 columns">
+<h1>Patient Tracker</h1>
 </div>
 
-<div class="row">
-<div class="large-12 columns">
-<h1>Edit data</h1>
+<ul class="menu" style="list-style-type: none;">
+  <li><a href="#">One</a></li>
+</ul>
 
 <div id='editor_holder'></div>
 <hr>
-</div>
 </div>
 
 
@@ -65,3 +61,12 @@ document.getElementById('submit').addEventListener('click',function() {
   <textarea id="textarea" name="payload"></textarea>
   <input type="button" onclick="myFunction()" value="Submit">
 </form>
+</div>
+<div class="row">
+<div class="large-3 columns">
+<h1><img src="http://placehold.it/400x100&text=Edit"></h1>
+</div>
+<div class="large-9 columns right">
+<button id='submit' style="text-align: right;">Save changes</button>
+</div>
+</div>
