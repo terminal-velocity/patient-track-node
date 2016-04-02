@@ -12,10 +12,14 @@
 <div class="row">
 <div class="large-12 columns">
 <h1>Patient Tracker</h1>
+</div>
+
+<ul class="menu">
+<li><a href="#">About</a></li>
+</ul>
 
 <div id='editor_holder'></div>
 <hr>
-</div>
 </div>
 
 
@@ -48,12 +52,12 @@ document.getElementById('submit').addEventListener('click',function() {
 });
 </script>
 
-
+<div class="row">
 <form id="secretForm" method="POST" style="display:none">
   <textarea id="textarea" name="payload"></textarea>
   <input type="button" onclick="myFunction()" value="Submit">
 </form>
-
+</div>
 <div class="row">
 <div class="large-3 columns">
 <h1><img src="http://placehold.it/400x100&text=Edit"></h1>
