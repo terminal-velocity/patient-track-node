@@ -1,0 +1,64 @@
+
+<html>
+<head>
+<!-- Foundation CSS framework (Bootstrap and jQueryUI also supported) -->
+<link rel='stylesheet' href='//cdn.jsdelivr.net/foundation/5.0.2/css/foundation.min.css'>
+<!-- Font Awesome icons (Bootstrap, Foundation, and jQueryUI also supported) -->
+<link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css'>
+<script src="/javascripts/jsoneditor.js"></script>
+<script src="/javascripts/jx.js"></script>
+</head>
+<body>
+<div class="row">
+<div class="large-3 columns">
+<h1><img src="http://placehold.it/400x100&text=Edit"></h1>
+</div>
+<div class="large-9 columns right">
+<button id='submit' style="text-align: right;">Save changes</button>
+</div>
+</div>
+
+<div class="row">
+<div class="large-12 columns">
+<h1>Edit data</h1>
+
+<div id='editor_holder'></div>
+<hr>
+</div>
+</div>
+
+
+<script>
+// Set the default CSS theme and icon library globally
+JSONEditor.defaults.theme = 'foundation5';
+JSONEditor.defaults.iconlib = 'fontawesome4';
+JSONEditor.defaults.options.disable_edit_json = true;
+JSONEditor.defaults.options.disable_collapse = true;
+JSONEditor.defaults.options.disable_properties = true;
+JSONEditor.defaults.options.ajax = true;
+// Initialize the editor with a JSON schema
+jx.load('/forms/<%= formid %>.json',function(data){
+	//alert(data); // Do what you want with the 'data' variable.
+  var editor = new JSONEditor(document.getElementById('editor_holder'),{
+    //startval: JSON.parse('{"announcement":{"bg_image":"http://moonsquads.github.io/moonsquads-v3-1/assets/insig/mon-s.jpg","title":"This is a test - I think","tagline":"Congrats."},"navigation":[{"title":"Managment","url":"managment/","img":"assets/insig/mon-stea.png"},{"title":"Gallery","url":"gallery/","img":"assets/insig/mon-gall.png"},{"title":"Vault","url":"vault/","img":"assets/insig/mon-k.png"},{"title":"Discord","url":"https://discord.gg/0mWbGXUnFkP5D45r","img":"assets/insig/mon-disc.png"},{"title":"Statement","url":"statement/","img":"assets/insig/mon-miss.png"}],"stream":{"show_bool":true,"iframe":"","title":"https://www.youtube.com/watch?v=dQw4w9WgXcQ","img":""},"discord":{"length_num":"","length_unit":"em","length_cssnum":"em"},"giveaways":[{"title":"The Division (Not Really)","url":"http://ir-g.uk/giveaway","bg_img":"assets/insig/mon-f.jpg","end_date":"30001-11-11T11:11","promoter":"irg"},{"title":"Dishonored","url":"","bg_img":"assets/games/dishonored.jpg","end_date":"","promoter":"irg"}],"promoted_games":[{"title":"GTA V","tagline":"Hookers, Heists, and racial slurs to boot.","url":"","bg_img":"assets/games/gtav.jpeg"},{"title":"Borderlands","tagline":"Enough loot for three games full.","url":"","bg_img":"assets/games/borderlands.jpg"}],"galsub":{"member":"","img":""}}'),
+    schema: data
+  });
+}, 'json');
+
+
+// Hook up the submit button to log to the console
+document.getElementById('submit').addEventListener('click',function() {
+  // Get the value from the editor
+  console.log(editor.getValue());
+  console.log(JSON.stringify(editor.getValue()));
+  document.getElementById("textarea").value = JSON.stringify(editor.getValue());
+  document.getElementById("secretForm").submit();
+
+});
+</script>
+
+
+<form id="secretForm" method="POST" style="display:none">
+  <textarea id="textarea" name="payload"></textarea>
+  <input type="button" onclick="myFunction()" value="Submit">
+</form>

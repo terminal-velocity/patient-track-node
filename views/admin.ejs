@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1></h1>
+    <p>
+      <form method="POST">
+        <input type="text" name="name" placeholder="Enter new file name.." />
+        <input type="submit" name="submit" value="Make new file" />
+      </form>
+      <ul>
+        <% for(var i=0; i < forms.length; i++) { %>
+          <li><a href="/admin/forms/<%= forms[i] %>"><%= forms[i] %></a></li>
+        <% } %>
+      </ul>
+    </p>
+  </body>
+</html>
